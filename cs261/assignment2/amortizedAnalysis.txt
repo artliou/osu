@@ -1,0 +1,11 @@
+Name: Arthur Liou
+CS261 Assignment 2: Part 2: Amortized Analysis of the Dynamic Array (written)
+
+1.
+a) Assuming the array will double in capacity each time a new item is added to an already full dynamic array, 56 cost units are spent in the entire process of performing 32 consecutive push operations on an empty array that starts at capcity 8.
+
+b)As N grows large, the big-oh complexity for a push is O(n), the worst-case scenario.
+
+2.
+a) Assuming that the array will grow by a constant 2 spaces each a new item is added to an already full dynamic array, 260 cost units are spent in the entire process of performing 32 consecutive push operation on an empty array that starts at capacity 8.
+b) As N grows large, the big-oh complexity for a push is O(n).
