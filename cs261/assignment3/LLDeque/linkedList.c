@@ -150,6 +150,8 @@ void linkedListRemoveFront(struct LinkedList *list)
 void linkedListRemoveBack(struct LinkedList *list)
 {
 	// FIXME: you must write this
+	assert(!linkedListIsEmpty(list));
+	removeLink(list, list->backSentinel->prev);
 }
 
 /**
@@ -158,8 +160,10 @@ void linkedListRemoveBack(struct LinkedList *list)
 int linkedListIsEmpty(struct LinkedList *list)
 {
 	// FIXME: you must write this
-	assert(!linkedListIsEmpty(list));
-	removeLink(list, list->backSentinel->prev);
+	if (list->size == 0)
+		return 1;
+	else
+		return 0;
 }
 
 /**
@@ -213,17 +217,22 @@ void linkedListRemove(struct LinkedList *list, TYPE value)
 	// FIXME: you must write this
 	assert(list != 0);
 	assert(list->size > 0);
+	// printf("Value to Find %i\n", value);
 
 	if (linkedListContains(list, value))
 	{
 		struct Link *temp = list->frontSentinel->next;
-
-		if (temp->value == value)
+		// printf("Found %i\n", temp->value);
+		while (temp->next != 0)
 		{
-			removeLink(list, temp);
-			return;
+			if (temp->value == value)
+			{
+				removeLink(list, temp);
+				return;
+			}
+			else
+				temp = temp->next;
 		}
-		else
-			temp = temp->next;
 	}
+	return;
 }
