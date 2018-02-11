@@ -67,8 +67,8 @@ static void addLinkAfter(struct CircularList *list, struct Link *link, TYPE valu
 static void removeLink(struct CircularList *list, struct Link *link)
 {
 	// FIXME: you must write this
-	list->prev->next = link->next;
-	list->next->prev = link->prev;
+	link->prev->next = link->next;
+	link->next->prev = link->prev;
 	free(link);
 	link = NULL;
 	list->size--;
@@ -172,7 +172,7 @@ void circularListPrint(struct CircularList *list)
 	struct Link *temp = list->sentinel->next;
 	for (int i = 0; i < list->size; i++)
 	{
-		printf("%f ".temp->value);
+		printf("%f ", temp->value);
 		temp = temp->next;
 	}
 }
