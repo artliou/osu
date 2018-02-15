@@ -33,7 +33,6 @@ void initDynArr(DynArr *v, int capacity)
 }
 
 /* Allocate and initialize dynamic array.
-
 	param:	cap 	desired capacity for the dyn array
 	pre:	none
 	post:	none
@@ -50,7 +49,6 @@ DynArr *newDynArr(int cap)
 }
 
 /* Deallocate data array in dynamic array.
-
 	param: 	v		pointer to the dynamic array
 	pre:	none
 	post:	d.data points to null
@@ -82,7 +80,6 @@ void deleteDynArr(DynArr *v)
 }
 
 /* Resizes the underlying array to be the size cap
-
 	param: 	v		pointer to the dynamic array
 	param:	cap		the new desired capacity
 	pre:	v is not null
