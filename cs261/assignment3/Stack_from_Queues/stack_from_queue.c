@@ -163,7 +163,7 @@ void stackPush(struct stack *s, TYPE value)
 TYPE stackTop(struct stack *s)
 {
   assert(!stackIsEmpty(s));
-  //Transfer q1 to q2 in referse order, except for least recently added link.
+  //Transfer q1 to q2 in reverse order, except for least recently added link.
   while (s->q1->frontSentinel->next->next != 0)
   {
     TYPE value = _queueFront(s->q1);
