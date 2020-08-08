@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python chatserve.py $1

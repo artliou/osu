@@ -1,0 +1,53 @@
+<html>
+{{#each foo}} {{this}} {{/each}}
+<div>
+    <h3> Add Actor to Movie </h3>
+    <form id="add_actor_to_movie" action="/movie_actors" method="post">
+        Movie:
+        <select name='movie_id'>
+            {{#each movies}}
+            <option value='{{id}}'>{{title}}</option>
+            {{/each}}
+        </select>
+        <br> Actors:
+        <sup>Multi-select</sup>
+        <select multiple name="actors">
+            {{#each actors}}
+            <option value="{{id}}">{{first_name}} {{last_name}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<br/>
+<h3> List of Movies with their Actors </h3>
+<table>
+    <thead>
+        <th>Movie</th>
+        <th>Year</th>
+        <th>Actor(s)</th>
+    </thead>
+    <tbody>
+        {{#each movie_actors}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{year}}</td>
+            <td>{{name}}</td>
+            <td>
+                <button onclick="deleteMovieActor({{movie_id}},{{actor_id}})">Delete</button>
+            </td>
+            <td>
+                <a href='#' onclick='javascript: alert("Update associations using the add form and delete button.")'>Update</a>
+            </td>
+        </tr>
+        {{else}}
+        <b> No movies with actors found! Add some using the form. </b>
+        {{/each}}
+
+    </tbody>
+</table>
+
+<br/>
+
+</html>

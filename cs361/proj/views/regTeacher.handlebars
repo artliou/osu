@@ -1,0 +1,27 @@
+
+<h2>Teacher Registration</h2>
+	<div>
+	<form id="form" method="POST" action="/registerTeacher">
+		<fieldset>
+			<label>First Name:</label>
+			<input type="text" id="first_name" name="first_name" required>
+			<br>
+			<label>Last Name:</label>
+			<input type="text" id="last_name" name="last_name" required>
+			<br>
+			<label>Email:</label>
+			<input type="email" id="email" name="email" required>
+			<br>
+			<label>School:</label>
+			<select name="school">
+				{{#data1.row_info}}
+				<option value="{{name}}">{{name}}</option>
+				{{/data1.row_info}}
+			</select>
+			<br>
+			<button>Submit</button>
+			<br>
+			<a href="/admin_homepage"><input type="button" value="Admin Homepage"></a>
+		</fieldset>
+	</form>
+</div>

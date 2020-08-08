@@ -1,0 +1,110 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\setlength{\parskip}{1em}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Week 8 Writeup}
+\author{Arthur Liou}
+
+\maketitle
+
+Prompt: Submitting a write-up of your thoughts, impressions, and any conclusions based on the material from the week. Each week will have its own assignment in the grades page.
+\par
+
+\linebreak
+For the first part of this week’s writeup, I’m reflecting on the topic – Messaging Security. I really loved this week. Not as many slides, but also there was a lot of content and lab work in this week, which I really like for learning because I could play around with the materials and content without having any expectations (group work/hw type) set upon what I’m learning. Some of the terminology and tools I knew and had used before, but there were much more that I didn’t know before. It was great learning more about this from a educational cybersecurity standpoint rather than a personal and professional viewpoint. All in all, an excellent week of material!
+For what we covered and learned, see my lecture notes below.
+
+\newpage
+Lecture Notes: Messaging Security 
+\newline
+Lesson 1 – Messaging Security
+\begin{itemize}
+\item Phishing Quiz
+\item Terminology - Spam/Ham, Strap/Honeypot, Botnet, Snowshoe spam, Phishing vs Spear Phishing, RBL, Heuristics, Bayesian (Statistical), Fingerprinting/Hashing
+\item History and Evolution of Spam, botnets
+\item Technology to combat spam: Engines
+\item Reputation-driven: IP, message, URL
+\item Content-driven: common strings, fixed strings vs variable strings (regular expression), message attributes, combo of strings and attributes
+\item Tools for Messaging Data – Linux tools, open-source DBs, regex coach, trustedsource.org, spamhaus.org
+\item Tools for research purposes – Dig (Domain Information Groper, WHOIS
+\item Demo 1 – Postgres – Exploration.
+\item Demo 2 – Regex Coach + Group Practice
+\item Research Techniques for managing the data flood: Samples metadata: Parsing, Grouping, Aggregation, ID of outliers
+\item Considerations – Human input required, fully automated, combination of auto and human input?, probability scoring vs additive scoring
+\item Lab 1 – Data Exploration. Total, distinct, average, types of files and their extensions
+\item Lab 1 – Representative Delegation
+\item Nominate an individual to present the group’s analysis and findings at the end of Lab 2
+\item Recap; Key Concepts – Data Model – Spam/Ham
+
+Lesson 2 – Lecture Wrap and Classification Lab
+\item SMTP Conversation – Ham, Spam, Email Header Reading
+\item Data Model – Spam, Ham
+\item The Data Scientific Method
+\item 1. Start with data.
+\item 2. Develop intuitions about the data and the questions it can answer.
+\item 3. Formulate your question.
+\item 4.Leverage your current data to better understand if it is the right
+\item question to ask. If not, iterate until you have a testable hypothesis.
+\item 5. Create a framework where you can run tests/experiments.
+\item 6. Analyze the results to draw insights about the question.
+\item Classification Lab - The provided message data table has 100k rows of real-world message meta data. Use the tools and techniques covered to make spam/ham decisions for all records
+\item SQL Examples. Useful Operators:
+\item COUNT()
+\item DISTINCT()
+\item SPLITPART()
+\item GROUP BY col
+\item ORDER BY col
+\item Spam is pervasive - Digital & Printed media, Audio/Visual
+\item Many aspects of Security can be reduced to finding the least common denominator among large data sets
+\item Automate “Finding the needle”
+\item Classification accuracy is directly tied to the depth in which we are able to describe samples
+\item Tools
+\item Spamhaus RBL
+\item McAfee RBL
+\item The Regex Coach
+\item Trustedsource.org
+\item Domaintools.net
+\item Reputationauthority.org
+\item Yougetsignal.com/tools/web-sites-on-web-server/
+\item Spamassassin.apache.org
+\item PostgreSQL
+
+\end{itemize}
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}

@@ -1,0 +1,48 @@
+
+<h2>Student Registration Page</h2>
+	<div>
+	<form id="form" method="POST" action="/addStudent">
+		<fieldset>
+			<legend>Please fill out form</legend>
+			<label>First Name:</label>
+			<input type="text" id="first_name" name="first_name" required>
+			<br>
+			<label>Last Name:</label>
+			<input type="text" id="last_name" name="last_name" required>
+			<br>
+			<label>Grade:</label>
+			<input type="number" id="grade" name="grade" required>
+			<br>
+			<label>Email:</label>
+			<input type="email" id="email" name="email" required>
+			<br>
+			<label>School:</label>
+			<select name="school">
+				{{#data1.row_info}}
+				<option value="{{name}}">{{name}}</option>
+				{{/data1.row_info}}
+			</select>
+			<br>
+			<label>ID:</label>
+			<input type="number" id="id" name="id" required>
+			<br>
+			<label>Teacher:</label>
+			<select name="teacher">
+				{{#data2.row_info}}
+				<option value="{{id}}">{{first_name}} {{last_name}}</option>
+				{{/data2.row_info}}
+			</select>
+			<br>
+			<label>Subject:</label>
+			<select name="subject">
+				{{#data3.row_info}}
+				<option value="{{student_id}}">{{first_name last_name}}</option>
+				{{/data3.row_info}}
+			</select>
+			<br>
+			<button>Submit</button>
+			<br>
+			<a href="/teacher_homepage"><input type="button" value="Homepage"></a>
+		</fieldset>
+	</form>
+</div>

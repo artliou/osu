@@ -1,0 +1,120 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\setlength{\parskip}{1em}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item [\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Week 4 Writeup}
+\author{Arthur Liou}
+
+\maketitle
+
+Prompt: Submitting a write-up of your thoughts, impressions, and any conclusions based on the material from the week. Each week will have its own assignment in the grades page.
+\par
+
+\linebreak
+	For this week’s writeup, I’m reflecting on the topic – Vulnerabilities and Exploits. While informative, I thought it was a lot of fluff and the material was minimally educational. Looking back, it looks like the material could be condensed into maybe 15-20 slides and 20 minutes of lecture material. BUT this week did allow us to work through the labs and see some of these in real time. With this in mind, I’m wondering if I’m missing the bigger picture that ties this together. When going through this week’s material, we went over just the few flaw classes and vulnerabilities in very granular detail. I could not shake the feeling that we were just getting very small part of the visibility of how deep the entire topic could go, and that that very small part was just a small insignificant part of the topic(s) (let’s configuration vulnerability as an example) that we could have dived in deeper. What’s I’m trying to get here is that we’re just getting baby steps in to the topic while what I want to actually learn here is how to run. Concluding, while this week was a bit of a letdown, I’m hoping that the next few following weeks’ material and topics that are being taught is much more engaging and interesting.
+
+\newpage
+Lecture Notes
+\newline
+Lecture 1 – Vulnerabilities and Exploits
+\begin{itemize}
+\item WinDBG, Stack/Stack-based Vulnerability
+\item Program Control
+\item Manipulating Software – finding “bugs” which alter the program behavior
+\item Taking advantage of a misconfiguration or poor programming practice
+\item Bug Bounty Programs
+\item Lab 1: Hello Mr. WinDBG, Pouring through the registry, program memory,  
+\item Viewng Memory: dd, da, du; Breakpoints: bp <addr>, Clear all: bc *, Stepping: t, p; Disassembly View -> Disass.; Conversion: .formats; Math: ?1+1; Modules, 
+\item Some Flaw Classes & Vulnerabilities: 
+o	Configuration: weak password,
+o	Logic – authorization issues,
+o	Storage – Inadequate encryption
+o	Input validation – memory corruption, injection
+\item Memory Corruption – accessing memory in an invalid way which results in an undefined behavior. Reading/writing, usually stack or heap, originally unintended, what we’re looking to control
+\item Common Categories – lifetime control (exploit tomorrow), uninitialized memory, array index calculations, buffer length calculations (exploit today)
+\item Exploitation – taking advantage of a vulnerability – control the “undefined” behavior
+\item vulnerability trigger – invokes the software bug to obtain control of the program
+\item payload – action to be performed when control is obtained. Ex. “Shell” code” – usually assembly code to execute a shell
+\item Stack Recap – Main and step functions to recap 
+\item Exploit Round 1 – Stack overflow
+\item Code Execution
+\item 1) Crash Triage
+\item 2) Determine the return address
+\item 3) position our shell code
+\item 4) Find the address of our shellcode
+\item Crash Triage – what do we control? What registers contain or point to attacker-controlled data? Is that data on the stack or heap? Do we control critical data such as stack frames?
+\item Where are we in the execution of the program? Where’s the vulnerability
+\item 2) Determine the return address offset
+o	Figure out the offset to EIP, don’t fear JavaScript. Lab helpers – “msfPatternString” variable. From WinDBG: !load byakugan !pattern offset 2000
+\item 3) Position our shellcode – linear stack overflow
+\item Then #4
+\item Trampoline – jump to a location which jumps to another (eg. Addr of a jmp esp instruction)
+o	1) Find a module loaded at a static address
+o	2) Find “jump esp” (or similar instruction within that memory space
+\item Lab 2: Terx – Smashing the stack
+\item 1) Triage: k for call stack and disassembly view
+\item 2) Trigger (build the s variable in the JS), MakeString(Amount) // 1 = 2 byte, remember order
+\item 3) Find address to jmp esp in windbg, add it to ‘s’ -> s[start][end] ff e4
+\item 4) Add in “shell code” variable to ‘s’
+\end{itemize}
+
+\newline
+Lecture 2 – Vulnerabilities and Exploits
+\begin{itemize}
+\item Use-After-Free
+\item 1) Free the Object
+\item 2) Replace the object with our – figure out the size, make allocations of the same size
+\item 3) Reposition our shellcode
+\item 4) Use the object again
+\item Heap! heapAlloc and default process heap	
+\item Low Fragmentation Heap – creates buckets for a specific size after the nth allocation of that size
+\item Allocating heap data with JavaScript, enable LFH
+\item Freein’ Then Usin’
+\item Browsers – interprets languages to render pages, allows u sto allocate/de-allocate on demand
+\item Java Classes, Heap
+\item Tools: Page Heap – Special “Debugging” heap, Enabled via gflags (elevated cmd prompt), !heap WinDbg extension
+\item Use-After-Free from 2a above – figure out the size (break on heapFree())
+\item Freedom
+\item Browser use (for #3), Heapsray – high memory address
+\item Lesson 3 – Exploit!
+
+\end{itemize}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}

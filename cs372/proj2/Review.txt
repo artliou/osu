@@ -1,0 +1,17 @@
+https://github.com/spettinichi/CS372/blob/master/week5/chatClient.c
+
+I spend 4-5 hours learning, changing it up. But there was not many new introductions...But at least not exactly line for line. 
+
+I made it templated, used while loops in each of the 4 message-related functions
+Added code from my other resources
+
+Python - Probably just enough
+C - not sure (more worried about this one)
+
+
+https://github.com/supernimbus/CS372/blob/master/Project1/chatserve.py
+https://github.com/search?l=C&o=desc&q=cs372&s=updated&type=Repositories
+
+https://github.com/search?q=cs372+pthread_create&type=Code
+
+http://beej.us/guide/bgnet/html/single/bgnet.html
