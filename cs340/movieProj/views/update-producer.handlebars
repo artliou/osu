@@ -1,0 +1,12 @@
+<html>
+<h1>Update {{producers.first_name}} {{producers.last_name}}:</h1>
+<form id="update-producer" action="/producer" method="post">
+    First name:
+    <input type="text" name="first_name" value="{{producers.first_name}}">
+    <br> Last name:
+    <input type="text" name="last_name" value="{{producers.last_name}}">
+</form>
+<button onclick="updateProducer({{producers.id}})">Update</button>
+</script>
+
+</html>

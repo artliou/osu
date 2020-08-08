@@ -1,0 +1,25 @@
+<h2>Add and Update Subjects</h2>
+<div>
+	<form method="POST" action="/addTutorSubject">
+		<fieldset>
+			<legend>Tutor: Add Subject</legend>
+			<br>
+			<label>Tutor:</label>
+			<select name="student">
+				{{#data1.row_info}}
+				<option value="{{id}}">{{first_name}} {{last_name}}</option>
+				{{/data1.row_info}}
+			</select>
+			<br>
+			<label>Subject:</label>
+			<select name="subject">
+				{{#data2.row_info}}
+				<option value="{{id}}">{{name}}</option>
+				{{/data2.row_info}}
+			</select>
+			<br>
+			<button>Go</button>
+			<br>
+		</fieldset>
+	</form>
+</div>

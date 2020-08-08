@@ -1,0 +1,10 @@
+<html>
+<h1>Update {{genres.name}}:</h1>
+<form id="update-genre" action="/genre" method="post">
+    Genre Name:
+    <input type="text" name="name" value="{{genres.name}}">
+</form>
+<button onclick="updateGenre({{genres.id}})">Update</button>
+</script>
+
+</html>

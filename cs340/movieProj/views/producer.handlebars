@@ -1,0 +1,36 @@
+<html>
+{{#each foo}} {{this}} {{/each}}
+<h3>Add new producer:</h3>
+<form id="addproducer" action="/producer" method="post">
+    First name:
+    <input type="text" name="fname"> Last name:
+    <input type="text" name="lname">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+<h3>Current Producers:</h3>
+<table>
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
+    <tbody>
+        {{#each producers}}
+        <tr>
+            <td>{{first_name}}</td>
+            <td>{{last_name}}</td>
+            <td>
+                <button onclick="deleteProducer({{id}})">Delete</button>
+            </td>
+            <td>
+                <a href="/producer/{{id}}">Update</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br/>
+
+</html>

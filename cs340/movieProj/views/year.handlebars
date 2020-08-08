@@ -1,0 +1,29 @@
+<html>
+{{#each foo}} {{this}} {{/each}}
+<h3>Search Movies by Year</h3>
+<form id="searchyear" action="/year" method="post">
+    Year:
+    <input type="number" name="year">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+<h3>Movies That Year:</h3>
+<table>
+    <thead>
+        <th>Movie Titles</th>
+        <th>Year</th>
+    </thead>
+    <tbody>
+        {{#each years}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{year}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br/>
+
+</html>

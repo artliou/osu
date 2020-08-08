@@ -1,0 +1,40 @@
+
+<h2>Tutor Registration Page</h2>
+	<div>
+	<form id="form" method="POST" action="/addTutor">
+		<fieldset>
+			<legend>Please fill out form</legend>
+			<label>First Name:</label>
+			<input type="text" id="first_name" name="first_name" required>
+			<br>
+			<label>Last Name:</label>
+			<input type="text" id="last_name" name="last_name" required>
+			<br>
+			<label>Email:</label>
+			<input type="email" id="email" name="email" required>
+			<br>
+			<label>City:</label>
+			<input type="text" id="city" name="city">
+			<br>
+			<label>State:</label>
+			<input type="text" id="state" name="state">
+			<br>
+			<label>College:</label>
+			<input type="text" id="college" name="college" required>
+			<br>
+			<label>Passed Background Check?:</label>
+			<input type="checkbox" id="check" name="check" {{bindAttr checked="isChecked" value=1 }}) required>
+			<br>
+			<label>Subjects You Can Tutor:</label>
+			<select name="subject">
+				{{#data3.row_info}}
+				<option value="{{name}}">{{name}}</option>
+				{{/data3.row_info}}
+			</select>
+			<br>
+			<button>Submit</button>
+			<br>
+			<a href="/admin_homepage"><input type="button" value="Admin Homepage"></a>
+		</fieldset>
+	</form>
+</div>

@@ -1,0 +1,44 @@
+
+<h2>Add a Tutoring Session</h2>
+	<div>
+	<form id="form" method="POST" action="/addSession">
+		<fieldset>
+			<label>Student:</label>
+			<select name="student">
+				{{#data1.row_info}}
+				<option value="{{id}}">{{first_name}} {{last_name}}</option>
+				{{/data1.row_info}}
+			</select>
+			<br>
+			<label>Subject:</label>
+			<select name="subject">
+				{{#data2.row_info}}
+				<option value="{{id}}">{{subject_name}}</option>
+				{{/data2.row_info}}
+			</select>
+			<br>
+			<label>Tutor:</label>
+			<select name="tutor">
+				{{#data3.row_info}}
+				<option value="{{id}}">{{first_name}} {{last_name}}</option>
+				{{/data3.row_info}}
+			</select>
+			<br>
+			<label>Location:</label>
+			<select name="school">
+				{{#data4.row_info}}
+				<option value="{{id}}">{{school_name}}</option>
+				{{/data4.row_info}}
+			</select>
+			<br>
+			<label>Date:</label>
+			<input type="date" name="date" id="date" min="2018-08-15" max="2018-12-15" />
+			<br>
+			<label>Time:</label>
+			<input type="time" name="time" id="time" min="15:00" max="17:00" />
+			<br>
+			<button>Submit</button>
+			<br>
+		</fieldset>
+	</form>
+</div>
