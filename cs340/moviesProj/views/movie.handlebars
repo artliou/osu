@@ -1,0 +1,61 @@
+<html>
+{{#each foo}} {{this}} {{/each}}
+<h3>Add new movies:</h3>
+<form id="addperson" action="/movie" method="post">
+    Title:
+    <input type="text" name="title">
+    <br> Year:
+    <input type="number" name="year">
+    <br> Director:
+    <select name="director">
+        {{#each directors}}
+        <option value="{{id}}">{{first_name}} {{last_name}}</option>
+        {{/each}}
+    </select>
+    <br> Producer:
+    <select name="producer">
+        {{#each producers}}
+        <option value="{{id}}">{{first_name}} {{last_name}}</option>
+        {{/each}}
+    </select>
+    <br> Genre:
+    <select name="genre">
+        {{#each genres}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+<h3>Current Movies:</h3>
+<table>
+    <thead>
+        <th>Movie Titles</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Director</th>
+        <th>Producer</th>
+    </thead>
+    <tbody>
+        {{#each movies}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{year}}</td>
+            <td>{{genre}}</td>
+            <td>{{director}}</td>
+            <td>{{producer}}</td>
+            <td>
+                <button onclick="deleteMovie({{id}})">Delete</button>
+            </td>
+            <td>
+                <a href="/movie/{{id}}">Update</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br/>
+
+</html>

@@ -1,0 +1,17 @@
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\UnitTest1.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\UnitTest1.pdb
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\UnitTest1.UnitTest1.apk
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\UnitTest1.UnitTest1-Signed.apk
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\Feature1.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\Feature1.pdb
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\UnitTest1.csprojResolveAssemblyReference.cache
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\UnitTest1.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\UnitTest1.pdb
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\android\bin\UnitTest1.UnitTest1.apk
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\res\drawable\icon.png
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\res\values\strings.xml
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\R.cs.flag
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\uploadflags.txt
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\Feature1.dll.mdb
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\UnitTest1.dll.mdb
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\bin\Debug\UnitTest1.dll.mdb

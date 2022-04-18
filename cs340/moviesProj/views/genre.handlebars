@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title> Genre </title>
+</head>
+{{#each foo}} {{this}} {{/each}}
+<h3>Add new genre:</h3>
+<form id="addgenre" action="/genre" method="post">
+    Genre Name:
+    <input type="text" name="name">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<br/>
+<h3>Genres:</h3>
+<table>
+    <thead>
+        <th>Name</th>
+    </thead>
+    <tbody>
+        {{#each genres}}
+        <tr>
+            <td>{{name}}</td>
+            <td>
+                <button onclick="deleteGenre({{id}})">Delete</button>
+            </td>
+            <td>
+                <a href="/genre/{{id}}">Update</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<br/>
+
+</html>

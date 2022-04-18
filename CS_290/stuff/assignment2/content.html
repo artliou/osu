@@ -1,0 +1,156 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<title>CS_290: Assignment 2 - HTML/CSS</title>
+
+<body>
+
+<div class="nav_header">
+  <ul class="nav_items">
+    <!--  Left navigation items (normal order) -->
+    <li class="nav_item"><img src="http://web.engr.oregonstate.edu/~praterj/CS_290/images/osu_logo_small.png"></img></li>
+    <li class="nav_item"><a href ="#">Menu 1</a></li>
+    <li class="nav_item"><a href ="#">Menu 2</a></li>
+    <li class="nav_item"><a href ="#">Menu 3</a></li>
+
+    <!--  Right navigation items (reverse order) -->
+    <li class="nav_item_nav"><a href ="#">Menu 4</a></li>
+  </ul>
+</div>
+
+<div class="tableCaption">Personel report</div>
+
+<table class="customTable">
+  <tr>
+    <th class="customTable-assignment2"></th>
+    <th class="customTable-assignment2">Name</th>
+    <th class="customTable-assignment2">Location</th>
+    <th class="customTable-assignment2">Occupation</th>
+    <th class="customTable-assignment2">Phone Contact</th>
+    <th class="customTable-assignment2">Manager</th>
+  </tr>
+  <tr>
+    <td class="customTable-primaryColumn">1</td>
+    <td class="customTable-assignment2">Bob McDoodle</td>
+    <td class="customTable-assignment2">Portland, OR</td>
+    <td class="customTable-assignment2">Software engineer</td>
+    <td class="customTable-assignment2">1-112-345-6789</td>
+    <td class="customTable-assignment2">Coffee McScrooge</td>
+  </tr>
+  <tr>
+    <td class="customTable-primaryColumn">2</td>
+    <td class="customTable-assignment2">Todd Bark</td>
+    <td class="customTable-assignment2">Vancouver, WA</td>
+    <td class="customTable-assignment2">Kitchen Cleaner</td>
+    <td class="customTable-assignment2">1-123-456-7890</td>
+    <td class="customTable-assignment2">Boss Lady</td>
+  </tr>
+  <tr>
+    <td class="customTable-primaryColumn">3</td>
+    <td class="customTable-assignment2">Big Bertha</td>
+    <td class="customTable-assignment2">Vancouver, WA</td>
+    <td class="customTable-assignment2">House Manager</td>
+    <td class="customTable-assignment2">1-234-567-8901</td>
+    <td class="customTable-assignment2">Sara</td>
+  </tr>
+  <tr>
+    <td class="customTable-primaryColumn">4</td>
+    <td class="customTable-assignment2">Rainbow Dash</td>
+    <td class="customTable-assignment2">Ponyville</td>
+    <td class="customTable-assignment2">Super Awesome</td>
+    <td class="customTable-assignment2">12345</td>
+    <td class="customTable-assignment2">Princess Celestia</td>
+  </tr>
+  <tr>
+    <td class="customTable-primaryColumn">5</td>
+    <td class="customTable-assignment2">Duke Wellington the Third</td>
+    <td class="customTable-assignment2">Vancouveriea</td>
+    <td class="customTable-assignment2">Food reclamation</td>
+    <td class="customTable-assignment2">867-5309</td>
+    <td class="customTable-assignment2">Dutchess the lion in your living room</td>
+  </tr>
+  <tr>
+    <td colspan="2">Footer 1</td>
+    <td colspan="4">Footer 2</td>
+  </tr>
+</table>
+
+<div class="outer-content">
+  Outer Content
+
+  <div class="inner-content">
+    Inner Content
+  </div>
+</div>
+
+<form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="post" class="customTable2">
+  <fieldset>
+    <legend>Form entry (HTTP POST)</legend>
+    <table class="customTable2">
+      <tr>
+        <td class="customTable2_name">Text Input:</td>
+        <td class="customTable2_input"><input type="text" name="text_input"></td>
+      </tr>
+      <tr>
+        <td class="customTable2_name">Number Input:</td>
+        <td class="customTable2_input"><input type="number" name="numerical_input"></td>
+      </tr>
+      <tr>
+        <td class="customTable2_name">Password Input:</td>
+        <td class="customTable2_input"><input type="password" name="password_input"></td>
+      </tr>
+      <tr>
+        <td class="customTable2_name">Radio Select:</td>
+        <td class="customTable2_input">
+          <input type="radio" name="candy" value="Snickers">Snickers<br>
+          <input type="radio" name="candy" value="Skittles">Skittles<br>
+          <input type="radio" name="candy" value="Mentos">Mentos
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="customTable2_name">
+          <input type="submit" value="Submit">
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+
+<form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="get" class="customTable2">
+  <fieldset>
+    <legend>Form response (HTTP GET)</legend>
+    <table class="customTable2">
+      <tr>
+        <td class="customTable2_name">Text Input:</td>
+        <td class="customTable2_input"><input type="text" name="text_input"></td>
+      </tr>
+      <tr>
+        <td class="customTable2_name">Number Input:</td>
+        <td class="customTable2_input"><input type="number" name="numerical_input"></td>
+      </tr>
+      <tr>
+        <td class="customTable2_name">Password Input:</td>
+        <td class="customTable2_input"><input type="password" name="password_input"></td>
+      </tr>
+      <tr>
+        <td class="customTable2_name">Radio Select:</td>
+        <td class="customTable2_input">
+          <input type="radio" name="candy" value="Snickers">Snickers<br>
+          <input type="radio" name="candy" value="Skittles">Skittles<br>
+          <input type="radio" name="candy" value="Mentos">Mentos
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="customTable2_name">
+          <input type="submit" value="Submit">
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+
+</body>
+
+</html>

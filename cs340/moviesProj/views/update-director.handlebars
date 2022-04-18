@@ -1,0 +1,12 @@
+<html>
+<h1>Update {{directors.first_name}} {{directors.last_name}}:</h1>
+<form id="update-director" action="/director" method="post">
+    First name:
+    <input type="text" name="first_name" value="{{directors.first_name}}">
+    <br> Last name:
+    <input type="text" name="last_name" value="{{directors.last_name}}">
+</form>
+<button onclick="updateDirector({{directors.id}})">Update</button>
+</script>
+
+</html>

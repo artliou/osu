@@ -1,0 +1,1442 @@
+{
+	"info": {
+		"name": "Boats and Slips",
+		"_postman_id": "91ea6898-8b11-94db-41f1-933ac9695fdf",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add New Boat A",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "90eeacad-b552-4299-adc1-d3c9ce08299b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Boat data is correct\", function () {",
+							"    pm.expect(jsonData.name).to.equal('Sea Witch');",
+							"    pm.expect(jsonData.type).to.equal('Catamaran');",
+							"    pm.expect(jsonData.length).to.equal(28);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Boat B",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6fb5609-eb3e-4670-aca7-13bc04002ef5",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Boat data is correct\", function () {",
+							"    pm.expect(jsonData.name).to.equal('Rusty Chain');",
+							"    pm.expect(jsonData.type).to.equal('Party Barge');",
+							"    pm.expect(jsonData.length).to.equal(34);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Rusty Chain\",\n  \"type\": \"Party Barge\",\n  \"length\": 34\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Boats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d938f24d-f1ef-45f7-9b65-dc1d008d156f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Boat data is an array\", function () {",
+							"    pm.expect(Array.isArray(jsonData)).is.true;",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						""
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Boat",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c82e6f00-b8b6-47b8-93b6-843efaa5a266",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var boatid = response.json()[response.json().length - 1].id;",
+							"        pm.variables.set(\"boatid\", boatid);",
+							"});    "
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dea78433-3400-45f4-8d51-607bdeaae3f7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Boat id matches\", function () {",
+							"    pm.expect(jsonData.id).is.equals(pm.variables.get(\"boatid\"));",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Edit boat name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b31ba235-0bf4-4c0b-b790-417995724668",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var boatid = response.json()[0].id;",
+							"        pm.variables.set(\"boatid\", boatid);",
+							"});    "
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dea78433-3400-45f4-8d51-607bdeaae3f7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Boat id matches\", function () {",
+							"    pm.expect(jsonData.id).is.equals(pm.variables.get(\"boatid\"));",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Group Therapy\",\n  \"type\": \"Tri-pontoon\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Slip 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9c34798-5840-4f7a-b6c4-c754be178549",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Slip data is correct\", function () {",
+							"    pm.expect(jsonData.number).to.equal('5');",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"number\": \"5\"\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Slip 10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e721a5c3-e683-4a3e-aa06-324bca93296d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Slip data is correct\", function () {",
+							"    pm.expect(jsonData.number).to.equal('10');",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"number\": \"10\"\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Slips",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67159624-3148-4144-87ba-7c3fd69d78f3",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Slip data is an array\", function () {",
+							"    pm.expect(Array.isArray(jsonData)).is.true;",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Slip",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9bae6ba-65b0-4ae2-aa71-f0d1008fbdd0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Slip id matches\", function () {",
+							"    pm.expect(jsonData.id).is.equals(pm.variables.get(\"slipid\"));",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c7ab15af-ca2f-4d1f-8d12-cbcc39f107b9",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var slipid = response.json()[response.json().length - 1].id;",
+							"        pm.variables.set(\"slipid\", slipid);",
+							"});    "
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Slip",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9bae6ba-65b0-4ae2-aa71-f0d1008fbdd0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Slip id matches\", function () {",
+							"    pm.expect(jsonData.id).is.equals(pm.variables.get(\"slipid\"));",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cfbc313b-75c5-42fe-a7ce-2919b53670e9",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var slipid = response.json()[0].id;",
+							"        pm.variables.set(\"slipid\", slipid);",
+							"});    "
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"number\": \"15\"\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put a undocked boat to sea",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "08c805cf-46d0-4bbb-ac30-bae536e6a82e",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatid\", response.json()[response.json().length - 1].id);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                pm.variables.set(\"slipid\", response.json()[response.json().length - 1].id);",
+							"        });",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "06378285-0006-4d95-b089-a67d19798572",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.test(\"Slip boat is null\", function () {",
+							"    pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.expect(response.json().current_boat).is.null;",
+							"    });    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put a boat at a dock",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "029fe778-4383-40b4-892e-b855d8b3367f",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatid\", response.json()[response.json().length - 1].id);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                pm.variables.set(\"slipid\", response.json()[response.json().length - 1].id);",
+							"        });",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac612045-f45b-4f34-845d-8d506b539fcf",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.test(\"Slip boat matches Boat id\", function () {",
+							"    pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.expect(response.json().current_boat).is.equals(pm.variables.get(\"boatid\"));",
+							"",
+							"    });    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get boat in the slip",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3af0948e-8ba4-4298-b47a-bb33e703a625",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var slipid = null;",
+							"        var result = response.json();",
+							"        result.forEach(function(slip) {",
+							"            console.log(slip);",
+							"            if (slip.current_boat !== null) {",
+							"                slipid = slip.id;",
+							"                pm.variables.set(\"boatid\", slip.current_boat);",
+							"            }",
+							"        });",
+							"        pm.variables.set(\"slipid\", slipid);",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2101014-9ed6-40a3-ab9f-6f1fc94c3004",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is JSON\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"console.log(jsonData)",
+							"pm.test(\"Boat id matches\", function () {",
+							"    pm.expect(jsonData.id).is.equals(pm.variables.get(\"boatid\"));",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips/{{slipid}}/current_boat",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips",
+						"{{slipid}}",
+						"current_boat"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put the same boat at a dock",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e60d6102-6590-49b9-af0d-990df3e035aa",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatid\", response.json()[response.json().length - 1].id);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                pm.variables.set(\"slipid\", response.json()[response.json().length - 1].id);",
+							"        });",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ee6701b-821b-48d8-9598-79469709a02e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.test(\"Slip boat matches Boat id\", function () {",
+							"    pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.expect(response.json().current_boat).is.equals(pm.variables.get(\"boatid\"));",
+							"",
+							"    });    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put a docked boat to sea",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d220f0a2-540a-43b7-b813-5ae6dee6ea7c",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatid\", response.json()[response.json().length - 1].id);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                pm.variables.set(\"slipid\", response.json()[response.json().length - 1].id);",
+							"                pm.variables.set(\"departure_count\", response.json()[response.json().length - 1].departure_history.length)",
+							"",
+							"        });",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "736d60e9-9b80-445d-a1d7-42a6c852030e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.test(\"Slip boat is null\", function () {",
+							"    pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.expect(response.json().current_boat).is.null;",
+							"        pm.test(\"Departure count has increased\", function () {",
+							"            console.log (response.json().departure_history.length);",
+							"            console.log(pm.variables.get(\"departure_count\"))",
+							"            pm.expect(response.json().departure_history.length).is.equals(pm.variables.get(\"departure_count\") + 1);",
+							"        });",
+							"    });    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Put a  boat back into the dock",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "40606657-4313-416b-937a-aef4692d1e67",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatid\", response.json()[response.json().length - 1].id);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                pm.variables.set(\"slipid\", response.json()[response.json().length - 1].id);",
+							"        });",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "19cbf32b-b337-47f3-9e63-4a6cf028c5e8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.test(\"Slip boat matches Boat id\", function () {",
+							"    pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.expect(response.json().current_boat).is.equals(pm.variables.get(\"boatid\"));",
+							"",
+							"    });    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Boat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d72deed-619d-402b-8ca5-fd04a7d7c8ca",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var responseLength = response.json().length;",
+							"        pm.test(\"Boats decreased by 1\", function () {",
+							"            pm.expect(responseLength).is.equals(pm.variables.get(\"boatcount\") - 1);",
+							"        });",
+							"        ",
+							"        pm.sendRequest(",
+							"        {",
+							"            url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"            method: 'GET',",
+							"        },",
+							"        function (err, response) {",
+							"            pm.test(\"Slip is empty\", function () {",
+							"                pm.expect(response.json().current_boat).is.equals(null);",
+							"            });",
+							"        });",
+							"});    "
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0f8a2609-025b-47dc-8ea1-985550e895a8",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatcount\", response.json().length);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                var slipid = null;",
+							"                var result = response.json();",
+							"                result.forEach(function(slip) {",
+							"                    if (slip.current_boat !== null) {",
+							"                        slipid = slip.id;",
+							"                        pm.variables.set(\"boatid\", slip.current_boat);",
+							"                    }",
+							"                });",
+							"                pm.variables.set(\"slipid\", slipid);",
+							"        });",
+							"});    "
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Sea Witch\",\n\t\"type\": \"Catamaran\",\n\t\"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put a boat at a dock",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "00914724-2e8f-4c44-a080-3ae59252a7e3",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/boats`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.variables.set(\"boatid\", response.json()[response.json().length - 1].id);",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                pm.variables.set(\"slipid\", response.json()[response.json().length - 1].id);",
+							"        });",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "43a1835d-bb9c-4f7e-b32c-f305f0803973",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.test(\"Slip boat matches Boat id\", function () {",
+							"    pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips/${pm.variables.get(\"slipid\")}`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        pm.expect(response.json().current_boat).is.equals(pm.variables.get(\"boatid\"));",
+							"",
+							"    });    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sea Witch\",\n  \"type\": \"Catamaran\",\n  \"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/boats/{{boatid}}/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"boats",
+						"{{boatid}}",
+						"{{slipid}}"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Slip",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b2d245b6-cdb9-4910-8a38-ec57a292b4c9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var responseLength = response.json().length;",
+							"        pm.test(\"Slips decreased by 1\", function () {",
+							"            pm.expect(responseLength).is.equals(pm.variables.get(\"slipcount\") - 1);",
+							"        });",
+							"        ",
+							"        pm.sendRequest(",
+							"        {",
+							"            url: `${hostname}:${port}/boats/${pm.variables.get(\"boatid\")}`,",
+							"            method: 'GET',",
+							"        },",
+							"        function (err, response) {",
+							"            pm.test(\"Boat is at sea\", function () {",
+							"                pm.expect(response.json().at_sea).is.equals(true);",
+							"            });",
+							"        });",
+							"});    "
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "734aae35-fcb2-4c14-bcc3-1907884f49fa",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.environment.get(\"hostname\");",
+							"var port = pm.environment.get(\"port\");",
+							"",
+							"pm.sendRequest(",
+							"    {",
+							"        url: `${hostname}:${port}/slips`,",
+							"        method: 'GET',",
+							"    },",
+							"    function (err, response) {",
+							"        var boatid = response.json()[0].id;",
+							"        pm.variables.set(\"slipcount\", response.json().length);",
+							"",
+							"        pm.sendRequest(",
+							"            {",
+							"                url: `${hostname}:${port}/slips`,",
+							"                method: 'GET',",
+							"            },",
+							"            function (err, response) {",
+							"                var slipid = null;",
+							"                var result = response.json();",
+							"                result.forEach(function(slip) {",
+							"                    console.log(slip);",
+							"                    if (slip.current_boat !== null) {",
+							"                        slipid = slip.id;",
+							"                        pm.variables.set(\"boatid\", slip.current_boat);",
+							"                    }",
+							"                });",
+							"                pm.variables.set(\"slipid\", slipid);",
+							"        });",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Sea Witch\",\n\t\"type\": \"Catamaran\",\n\t\"length\": 28\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:{{port}}/slips/{{slipid}}",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"slips",
+						"{{slipid}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

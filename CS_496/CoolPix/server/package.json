@@ -1,0 +1,19 @@
+{
+  "name": "CoolPix",
+  "version": "1.0.0",
+  "description": "Cool Pix backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.0",
+    "guid": "0.0.12",
+    "mongodb": "^3.0.1",
+    "mongoose": "^4.13.9"
+  }
+}

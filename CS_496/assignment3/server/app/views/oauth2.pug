@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+  head
+    title="CS 496 OAuth 2.0 Demo"
+    style
+      include ../../bootstrap/bootstrap.min.css
+      include ../../css/main.css
+    script(src='../../bootstrap/jquery-3.2.1.slim.min.js')
+    script(src='../../bootstrap/popper.min.js')
+    script(src='../../bootstrap/bootstrap.min.js')
+    script(src='../../client/state.js')
+  body
+    nav(class="navbar navbar-dark bg-dark viewNavbar")
+      a(class="navbar-brand" href="#")
+        | Magic OAuth 2.0 doughnut (from that particular bakery)
+      div(class="form-inline")
+        button(class="btn btn-outline-success" onclick="location.href = 'http://olafs-doughnut.appspot.com'")
+          | Sign Out
+
+    div(class="viewContainer container-fluid" id="body")
+      img(src="../../assets/mlp.png" class="imgfitparent")
+      
+    div(id="myModal" class="modal fade" role="dialog")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-header")
+            h4(class="modal-title")
+              img(src=userData.image.url)
+              | Sign in successful!
+            button(type="button" class="close" data-dismiss="modal")
+              | &times;
+          div(class="modal-body")
+            p
+              =userData.displayName
+            p
+              =userData.emails[0].value
+            p
+              a(href=userData.url)
+                | Visit Google+ page
+            p
+              | Client Secret : 
+              =state
+          div(class="modal-footer")
+            button(type="button" class="btn btn-default" data-dismiss="modal")
+              | Close
+    script
+      | $('#myModal').modal('show');

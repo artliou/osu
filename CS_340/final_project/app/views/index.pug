@@ -1,0 +1,52 @@
+html
+  head
+    link(rel="stylesheet" href="css/style.css")
+    link(rel="stylesheet" href="css/bootstrap.min.css")
+    title= title
+
+div(class="statusBar" id="statusBar")
+  div(class="statusAlert" id="statusAlert")
+  div(class="timerControl")
+    div(id="timerControl")
+    img(src="images/timectl.png" style="height: 75%; width: auto; padding-left: 3%; padding-right: 3%;" onclick="timerClick();")
+    
+div(class="propertyBar" id="propertyBar")
+  div(class="locationName" id="locationName")
+  div(class="locationItems" id="locationItems")
+  div(class="locationTransport" id="locationTransport")
+    br
+    | Send items to another location.
+    br
+    br
+    div(style="width:75%; margin-left: 12.5%;")
+      div(class="dropdown")
+        button(class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="itemToSend")
+          | Item to send
+          span(class="caret")
+        ul(class="dropdown-menu" id="itemsToSend")
+
+      br
+     
+      div(class="dropdown")
+        button(class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" id="itemDestinationLocation")
+          | Location to send to
+          span(class="caret")
+        ul(class="dropdown-menu" id="destinationLocations")
+      br
+      div(class="form-group")
+        label(for="itemQtySend")
+          |Qty:
+        input(type="text" class="form-control" id="itemQtySend")
+
+      div(style="text-align: right; padding-bottom: 30px;")
+        button(type="button" class="btn btn-success" onclick="sendItems();")
+          | Send!
+
+div(class="spaceView" id="spaceView")
+
+script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+script(src='http://requirejs.org/docs/release/2.2.0/minified/require.js')
+script(src="scripts/bootstrap.min.js")
+script(src="scripts/raphael.min.js")
+script(src="scripts/space_view.js")
+script(src="scripts/space_controller.js")

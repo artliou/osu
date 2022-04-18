@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Geotagger - CS 496 - Jeremy Prater</string>
+    <string name="latText">Latitude:</string>
+    <string name="longText">Longitude:</string>
+    <string name="addGeoMsg">Add Geo Message</string>
+    <string name="clearGeoMsg">Clear Messages</string>
+</resources>

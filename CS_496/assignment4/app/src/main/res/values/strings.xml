@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CS 496 Android UI - Jeremy Prater</string>
+    <string name="activity1">Launch Activity 1</string>
+    <string name="activity2">Launch Activity 2</string>
+    <string name="activity3">Launch Activity 3</string>
+    <string name="activity4">Launch Activity 4</string>
+    <string name="activity5">Launch Activity 5</string>
+    <string name="itemText1">Item 1</string>
+    <string name="itemText2">Item 2</string>
+    <string name="itemText3">Item 3</string>
+    <string name="itemText4">Item 4</string>
+    <string name="itemText5">Item 5</string>
+</resources>

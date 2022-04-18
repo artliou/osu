@@ -1,0 +1,68 @@
+html
+  head
+    link(rel="stylesheet" href="css/style.css")
+    link(rel="stylesheet" href="css/bootstrap.min.css")
+    title= title
+
+body
+  div(class="nav_header")
+    ul(class="nav_items")
+      <!--  Left navigation items (normal order) -->
+      li(class="nav_item")
+        img(src="images/osu_logo_small.png")
+      li(class="nav_item")
+        a(href ="#" onclick="sortDate(); return false;")
+          |Sort By Date
+      li(class="nav_item")
+        a(href ="#" onclick="sortWeight(); return false;")
+          |Sort By Weight
+      li(class="nav_item")
+        a(href ="#" onclick="sortReps(); return false;")
+          |Sort By Reps
+
+      <!--  Right navigation items (reverse order) -->
+      li(class="nav_item_nav")
+        a(href ="#" onclick="clearAll(); return false;")
+          |Clear All Workouts
+
+  div(class="outer-content" id="welcomeContent" style="display: block;")
+    div(class="inner-content" style="text-align: center;")
+      h2
+        |Workout tracker
+
+  div(class="outer-content" id="welcomeContent" style="display: block;")
+    div(class="inner-content")
+      | Add new workout...
+      br
+      br
+      form(class="form-inline")
+        div(class="form-group" style="width: 20%;")
+          input(type="text" class="form-control" id="date" placeholder="Date")
+        div(class="form-group" style="width: 20%;")
+          input(type="text" class="form-control" id="name" placeholder="Name")
+        div(class="form-group" style="width: 20%;")
+          input(type="text" class="form-control" id="reps" placeholder="Reps")
+        div(class="form-group" style="width: 20%;")
+          input(type="text" class="form-control" id="weight" placeholder="Weight")
+        div(class="form-group" data-toggle="buttons")
+          label(class="btn btn-primary active")
+            input(type="radio" name="options" id="weight_lbs" autocomplete="off" checked)
+            |LBS
+          label(class="btn btn-primary")
+            input(type="radio" name="options" id="weight_kg" autocomplete="off")
+            |KG
+
+        div(class="btn-group" data-toggle="buttons")
+          button(type="button" id="myButton" data-loading-text="Add" class="btn btn-primary" style="margin-left: 15%;" autocomplete="off" onclick="addWorkout(postAddWorkout); return false;")
+            | Add workout
+
+  div(class="outer-content" id="welcomeContent" style="display: block;")
+    div(class="inner-content")
+      | Workouts
+      br
+      div(id="workoutData")
+
+script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+script(src='http://requirejs.org/docs/release/2.2.0/minified/require.js')
+script(src="scripts/bootstrap.min.js")
+script(src="scripts/workout.js")

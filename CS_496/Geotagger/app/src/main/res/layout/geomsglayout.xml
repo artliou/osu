@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/textLatText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
+            android:text="@string/latText" />
+
+        <TextView
+            android:id="@+id/textLongText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textLatText"
+            android:padding="5dp"
+            android:text="@string/longText" />
+
+        <TextView
+            android:id="@+id/textRealLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textLongText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textLongText"
+            android:layout_toEndOf="@+id/textLongText"
+            android:padding="5dp"
+            android:text="12345" />
+
+        <TextView
+            android:id="@+id/textRealLat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textLongText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textLongText"
+            android:padding="5dp"
+            android:text="12345" />
+
+        <TextView
+            android:id="@+id/textGeoMsgText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textLongText"
+            android:padding="10dp"
+            android:text="Some Text here" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

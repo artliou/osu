@@ -1,0 +1,292 @@
+html
+  head
+    link(rel="stylesheet" href="css/style.css")
+    title= title
+
+body
+  div(class="nav_header")
+    ul(class="nav_items")
+      <!--  Left navigation items (normal order) -->
+      li(class="nav_item")
+        img(src="images/osu_logo_small.png")
+      li(class="nav_item")
+        a(href ="#" onclick="showNasa(); return false;")
+          |Nasa NeoWs Howto
+      li(class="nav_item")
+        a(href ="#" onclick="showRaphael(); return false;")
+          |RaphaelJS Howto
+      li(class="nav_item")
+        a(href ="#" onclick="showExample(); return false;")
+          |Integration Example
+
+      <!--  Right navigation items (reverse order) -->
+      li(class="nav_item_nav")
+        a(href ="#")
+          |Menu 4
+
+  div(class="outer-content" id="welcomeContent" style="display: block;")
+    div(class="inner-content")
+      p(style="text-align: center;")
+        | NeoWS/RaphaelJS How-to Guide
+        br
+        br
+        br
+        | Use the navigation buttons on the top to select a topic.
+
+  div(id="nasaContent" style="display: none;")
+    div(class="outer-content")
+      div(class="inner-content")
+        | The 
+        a(href="https://api.nasa.gov/api.html#NeoWS" target="_blank")
+          |NeoWs
+        |  API is a RESTful http service for querying near earth
+        |Asteriod Information.
+        br
+        | The basic query is as follows:
+        br
+        br
+        div(class="inner-content-code")
+          | GET https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY
+        br
+        br
+        | A javascript wrapper function was created to assemble the request URL and get the data.
+        br
+        br
+        | A callback function is provided to process the returned JSON data.
+        br
+        br
+        div(class="inner-content-code")
+          |function getNeoWSData(start, end, callback, context) {
+          br
+          |    var req = new XMLHttpRequest();
+          br
+          |    var targetUrl = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=' + start + '&end_date=' + end + '&api_key=' + APIKEY;
+          br
+          |    console.log('Getting NeoWs:' + targetUrl);
+          br
+          |    req.open('GET', targetUrl, true);
+          br
+          |    req.onreadystatechange = function () {
+          br
+          |        if (req.status >= 200 && req.status < 400) {
+          br
+          |            try {
+          br
+          |                callback(JSON.parse(req.responseText), context);
+          br
+          |            } catch (exception) {}
+          br
+          |        } else {
+          br
+          |            console.log("Error in network request: " + req.statusText);
+          br
+          |        }
+          br
+          |    };
+          br
+          |    req.send(null);
+          br
+          |}
+          br
+        br
+        br
+        | The div below has it's innerHTML property set by a call and callback to this function when the page is loaded.
+        br
+        br
+        div(class="inner-content-code" id="example1_code")
+
+    div(class="outer-content")
+      div(class="inner-content")
+        | The API is mostly self-describing with the key names in the data structure
+        br
+        br
+        | The response.links object contains 3 child objects called next, prev, and self.
+        | These objects are URLs that can be used to navigate forward and backwards in time from the current dataset.
+        br
+        br
+        | response.element_count is the number of objects in the dataset
+        br
+        br
+        | response.near_earth_objects is the primary object in the dataset.
+        | It has child objects which have keys of date strings.
+        br
+        br
+        | Each date string object is an array in which each element describes an asteriod which passed in a near earth orbit.
+        br
+        br
+        div(class="inner-content-code" id="example2_code")
+
+    div(class="outer-content")
+      div(class="inner-content")
+        br
+        br
+        | Please see the Integration example at the top of the nav bar for a visual demonstration of this data.
+        br
+        br
+
+
+  div(id="raphaelContent" style="display: none;")
+    div(class="outer-content")
+      div(class="inner-content")
+        a(href="http://dmitrybaranovskiy.github.io/raphael/" target="_blank")
+          |RaphaelJS
+        |  is a javascript SVG rendering library which allows runtime binding of DOM elements properties.
+        br
+        br
+        | This provides dynamic binding of onclick and onhover for interactive visual interfaces.
+        br
+        br
+        | The API is well documented so this how-to will move on to advanced topics of manulipation of DOM elements.
+        br
+        br
+        | We'll start with a basic example of a element that you can click and cause an alert to be called.
+        br
+        br
+        | The circle and SVG canvas are created when the page is loaded.
+        br
+        | The click handler is added to the circle once it is created with the following code:
+        br
+        div(class="inner-content-code")
+          | var graphics = Raphael('raphaelExample1', viewportWidth, viewportHeight);
+          br
+          | var circleObject = graphics.circle(viewportWidth / 2, viewportHeight / 2, viewportWidth / 10, viewportHeight / 10, viewportWidth / 15);
+          br
+          | circleObject.attr("fill", "#0f0");
+          br
+          | circleObject.attr("stroke", "#00f");
+          br
+          | circleObject.click(function () {
+          br
+          | alert('You clicked the circle!');
+          br
+          | });
+          br
+        br
+        | Click the green circle below!
+        br
+
+    div(class="outer-content")
+      div(class="inner-content" style="height:40vh;" id="raphaelExample1")
+
+    div(class="outer-content")
+      div(class="inner-content")
+        br
+        | This example uses the viewport function to move the SVG drawings around the canvas.
+        br
+        br
+        | If you click and drag the box below, it will drag around the canvas, but we are not actually moving the box, we are moving the viewport coordinates of the SVG canvas.
+        br
+        br
+        | Three event listeners are added to the DOM element:
+        br
+        br
+        | mousedown - Records initial position of the mouse event and sets the dragging variable to true.
+        br
+        | mousemouse - Checks the dragging variable, if it is true, then we get the mouse position delta, and apply it to a function called setViewBox.
+        br
+        | mouseup - Sets the dragging variable to false.
+        br
+        br
+        div(class="inner-content-code")
+          |graphics = Raphael('raphaelExample2', viewportWidth, viewportHeight);
+          br
+          |var boxObject = graphics.rect(viewportWidth / 2, viewportHeight / 2, 20, 20, 3);
+          br
+          |boxObject.attr("fill", "#0f0");
+          br
+          |boxObject.attr("stroke", "#00f");
+          br
+          |var dragging = false;
+          br
+          |var location = {};
+          br
+          |var viewport = {
+          br
+          |    x: 0,
+          br
+          |    y: 0
+          br
+          |};
+          br
+          |document.getElementById('raphaelExample2').addEventListener("mousedown", function (event) {
+          br
+          |    dragging = true;
+          br
+          |    location.x = event.screenX;
+          br
+          |    location.y = event.screenY;
+          br
+          |});
+          br
+          |document.getElementById('raphaelExample2').addEventListener("mouseup", function (event) {
+          br
+          |    dragging = false;
+          br
+          |});
+          br
+          |document.getElementById('raphaelExample2').addEventListener("mousemove", function (event) {
+          br
+          |    if (dragging === true) {
+          br
+          |        var delta = {};
+          br
+          |        delta.x = location.x - event.screenX;
+          br
+          |        delta.y = location.y - event.screenY;
+          br
+          |        location.x = event.screenX;
+          br
+          |        location.y = event.screenY;
+          br
+          |        viewport.x += delta.x;
+          br
+          |        viewport.y += delta.y;
+          br
+          |        graphics.setViewBox(viewport.x, viewport.y, viewportWidth, viewportHeight, false);
+          br
+          |    }
+          br
+          |});
+          br
+        br
+        br
+        | Drag the box below!
+        br
+
+    div(class="outer-content")
+      div(class="inner-content" id="raphaelExample2")
+
+  div(class="outer-content" id="exampleContent" style="display: none;")
+    div(class="inner-content" id="helpBox")
+      |Welcome to the neoWS asteroid viewer!
+      br
+      br
+      |Use the left and right arrows on the bottom of the panel to go forward and backwards in time by one day.
+      br
+      br
+      |Mouse over an asteroid to see details about it.
+      br
+      br
+      |Asteroids which are potentially dangerous are marked in red.
+      br
+      br
+      |Click on an asteroid to open the JPL database page for it.
+      br
+      br
+      |DISCLAIMER: This is not to scale, otherwise the earth would have been about 1 pixel large.
+      |Howver, the scaling is proportional.
+      br
+      br
+      |Happy browsing!
+      div(class="button" id="closeHelp")
+        | OK!
+      br
+      br
+    br
+
+    div(class="inner-content-integration" id="neoIntegration")
+
+script(src='http://requirejs.org/docs/release/2.2.0/minified/require.js')
+script(src="scripts/raphael.min.js")
+script(src="scripts/neoViewer.js")
+script(src="scripts/index.js")

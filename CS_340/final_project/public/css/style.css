@@ -1,0 +1,89 @@
+body {
+    background-color: #131313;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.statusBar {
+    width: 100%;
+    height: 10%;
+    background-color: #454545;
+    background-image: url('../images/space.jpg');
+    background-color: #373737;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+.propertyBar {
+    width: 30%;
+    height: 90%;
+    float: left;
+    background-color: #603030;
+    background-image: url('../images/space.jpg');
+    background-color: #373737;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.spaceView {
+    width: 70%;
+    height: 90%;
+    background-color: #101030;
+    float: right;
+}
+
+.statusAlert {
+    width: 70%;
+    height: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #e0e0e0;
+    font-size: 3em;
+    padding-left: 4%;
+}
+
+.timerControl {
+    width: 30%;
+    height: 100%;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #e0e0e0;
+    font-size: 3em;
+    padding-right: 4%;
+    padding-left: 4%;
+}
+
+.locationName {
+    font-size: 3em;
+    margin-left: 12.5%;
+    width: 75%;
+    text-align: center;
+    color: #d0d0d0;
+    background-color: #3040a0;
+    border-radius: 20px;
+}
+
+.locationItems {
+    font-size: 1.5em;
+    margin-left: 12.5%;
+    width: 75%;
+    text-align: left;
+    color: #d0d0d0;
+    background-color: #3040a0;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.locationTransport {
+    font-size: 1.5em;
+    margin-left: 12.5%;
+    width: 75%;
+    text-align: left;
+    color: #d0d0d0;
+    background-color: #3040a0;
+    border-radius: 20px;
+}

@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+
+################################################################################
+##
+## ftClient main file
+##
+## CS 372 - Project 2 - Jeremy Prater
+##
+
+import sys
+import argparse
+from ftClientConnection import ftClientConnection
+
+# Get arguments from command line
+parser = argparse.ArgumentParser(description='ftclient')
+parser.add_argument('host', help='ftserver host to connect to')
+parser.add_argument('port', type=int, help='ftserver port to connect to')
+parser.add_argument('-l', action='store_true', help='get directory listing')
+parser.add_argument('-g', help='download file')
+parser.add_argument('clientPort', type=int, help='ftclient port to connect to')
+args = parser.parse_args();
+
+# Validate arguments
+if (args.port < 0) or (args.port > 65535):
+    print("Invalid host port: {}".format(args.port))
+    sys.exit(-1)
+
+if (args.clientPort < 0) or (args.clientPort > 65535):
+    print("Invalid client port: {}".format(args.clientPort))
+    sys.exit(-2)
+
+# Setup command payload
+command = -1
+file = ""
+if args.l:
+    command = 0
+elif args.g != None:
+    command = 1
+    file = args.g
+else:
+    print("No command specified!")
+    sys.exit(-3)
+
+# Create connection to server and process data.
+with ftClientConnection(args.host, args.port, args.clientPort, command, file) as connection:
+    if (connection.ftConnect()):
+        connection.ftSendCommand()

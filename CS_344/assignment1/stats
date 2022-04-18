@@ -1,0 +1,174 @@
+#!/bin/bash
+
+#######################################################
+##
+## CS 344 Program 1 (Jeremy Prater)
+##
+## stats
+##
+
+## Exit immediately if an error occurs!
+set -eE
+
+################ BASH variable declarations
+inputbuffer=inputdata$$
+declare -A inputBuffer
+x=0
+y=0
+
+
+################ It's a trap
+## Execute cleanup function when the bash script exits
+trap cleanup INT HUP QUIT TERM KILL ERR
+
+function cleanup {
+    rm -f $inputbuffer
+}
+
+## rounding functions.
+## Two parameters. Returns the rounded number via stdout
+function roundNumber {
+    echo $(( ( $1 + ( $2 / 2 ) ) / $2 ))
+}
+
+## Calculate the median of an array and return the median
+## Handle the special case of an even number by returning the average
+function calcMedian {
+    ## Read input into the buffer data.
+    ## Echo data, insert new lines, sort data, and then remove new lines.
+    read -a data <<< "`echo $1 | tr \" \" \"\n\" | sort -n | tr \"\n\" \" \"`"
+    if [ $(( $2 % 2 )) -eq 0 ] ; then
+        a=${data[$(( (( $2 )) / 2 ))]}
+        b=${data[$(( (( $2  + 1)) / 2 ))]}
+        echo $(( ($a + $b) / 2))
+    else
+        echo ${data[$(( $2 / 2 ))]}
+    fi
+}
+
+## Input function that computes rows (--rows)
+function processRows {
+    echo -e "Average\tMedian"
+    for ly in `seq 0 $y`
+    do
+        sum=0
+        median=""
+        for lx in `seq 0 $x`
+        do
+            sum=$(( $sum + ${inputBuffer[$lx,$ly]} ))
+            median="$median ${inputBuffer[$lx,$ly]}"
+        done
+        if [ $lx ]
+        then
+            lx=$(( lx + 1 ))
+            printf "$(roundNumber ${sum} ${lx})"
+            printf "\t"
+            printf "$(calcMedian "${median}" ${lx})"
+            printf "\n"
+        fi
+    done
+}
+
+## Input function that computes columns (--columns)
+function processCols {
+    echo "Averages:"
+    for lx in `seq 0 $x`
+    do
+        sum=0
+        for ly in `seq 0 $y`
+        do
+            sum=$(( $sum + ${inputBuffer[$lx,$ly]} ))
+        done
+        ly=$(( ly + 1 ))
+        printf "$(roundNumber ${sum} ${ly})\t"
+    done
+    printf "\n"
+
+
+    echo "Medians:"
+    for lx in `seq 0 $x`
+    do
+        median=""
+        for ly in `seq 0 $y`
+        do
+            median="$median ${inputBuffer[$lx,$ly]}"
+        done
+        ly=$(( ly + 1 ))
+        printf "$(calcMedian "${median}" ${ly})\t"
+    done
+    printf "\n"
+}
+
+## Get the data from the temp file (file or stdin)
+## This function takes the input (from file or stdin) and saves
+## it to a temporary file defined by $inputbuffer
+function getInput {
+    if [ $1 ] ; then
+        cat $1 > $inputbuffer
+    else
+        stdinread
+    fi
+}
+
+## Read the input into a buffer
+function stdinread {
+    cat > $inputbuffer
+}
+
+## Read the contents of $inputbuffer into
+## the array inputBuffer
+function readInput {
+    while read -r -a buffer
+    do
+        x=0
+        for element in "${buffer[@]}"
+        do
+            inputBuffer[$x,$y]=$element
+            x=$(( x + 1 ))
+        done
+    y=$(( y + 1 ))
+    done <<< "`cat $inputbuffer`"
+
+    ## This is important. We subtract 1 from X and Y. Now X and Y are the max sizes for our data.
+    x=$(( x - 1 ))
+    y=$(( y - 1 ))
+}
+
+## Print the usage and exit gracefully
+function usage {
+    echo "./stats {-rows|-cols} [file]"
+    cleanup
+    exit 1
+}
+
+#########################################
+##
+## Main program start
+##
+
+## Check if we have extra variables
+if [ $3 ] ; then
+    exit 1
+fi
+
+## ... or not enough variables
+if [ ! $1 ] ; then
+    exit 1
+fi
+
+## Get the input from a stream or file
+getInput $2
+readInput "$inputbuffer"
+
+## Determine if we are calculating rows or columns
+if [[ $1 == -r* ]] ; then
+    processRows
+elif [[ $1 == -c* ]] ; then
+    processCols
+else
+    usage
+fi
+
+## Cleanup
+## delete temporary files
+cleanup

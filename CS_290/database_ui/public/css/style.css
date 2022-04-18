@@ -1,0 +1,162 @@
+body {
+    background-image: url('../images/wood.jpg');
+    background-color: #373737;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.nav_header {
+    background-color: #615042;
+    border: 10px #514032 solid;
+}
+
+.nav_header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav_header li {
+    float: left;
+    margin: 10;
+}
+
+.nav_header li a {
+    display: block;
+    text-align: center;
+    padding: 25px 25px;
+    color: black;
+    font-size: 20;
+    text-decoration: none;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+
+.nav_header li a:hover {
+    background-color: #385E86;
+}
+
+.nav_item_nav {
+    float: right !important;
+}
+
+.nav_item {
+    display: inline;
+}
+
+.outer-content {
+    width: 90%;
+    padding: 20px;
+    background-color: #9D601E;
+    text-align: center;
+    vertical-align: middle;
+    margin: 20px auto;
+    border-radius: 25px;
+}
+
+.inner-content {
+    width: 90%;
+    padding: 20px;
+    background-color: #303030;
+    text-align: left;
+    color: lightslategrey;
+    vertical-align: middle;
+    margin: 0 auto;
+    font-family: "Verdana";
+    font-size: 1.5em;
+    border-radius: 25px;
+}
+
+.inner-content-integration {
+    width: 95%;
+    padding: 20px;
+    background-color: #000;
+    text-align: left;
+    vertical-align: middle;
+    margin: 0 auto;
+    font-family: "Book Antiqua";
+    font-size: 1.5em;
+    border-radius: 25px;
+    height:70vh !important;
+}
+
+.inner-content-code {
+    width: 90%;
+    padding: 10px;
+    background-color: #A7C4C9;
+    text-align: left;
+    vertical-align: middle;
+    margin: 0 auto;
+    font-size: 0.7em;
+    font-family: "Courier New";
+    word-wrap: break-word;
+}
+
+.button {
+    width: 120px;
+    background-color: #409060;
+    border-radius: 25px;
+    text-align: center;
+    float:right;
+    padding: 10px;
+}
+
+.workout-content {
+    width: 90%;
+    padding: 10px;
+    background-color: #F5F2ED;
+    text-align: left;
+    color: lightslategrey;
+    margin: 0 auto;
+    font-family: "Courier New";
+    border-radius: 15px;
+}
+
+.workout-content-text {
+    width: 20% !important;
+    height: 100px;
+    font-size: 1em;
+    background-color: #d5d2cD;
+    color: #202020;
+    border-radius: 10px;
+    padding: 10px;
+    float: left;
+}
+
+.workout-content-delete {
+    cursor: default;
+    width: 10% !important;
+    height: 100px;
+    margin-top: -100px;
+    float:right;
+    font-size: 1em;
+    color: #202020;
+    background-color: #e03242;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.workout-content-edit {
+    width: 10% !important;
+    height: 100px;
+    font-size: 1em;
+    background-color: #308242;
+    color: #202020;
+    cursor: default;
+    border-radius: 10px;
+    padding: 10px;
+    float: left;
+}
+
+.workout-content-reset {
+    clear: both;
+}
+
+.workout-content-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

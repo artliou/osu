@@ -1,0 +1,22 @@
+body {
+    background-color: lightblue;
+}
+
+.viewNavbar {
+    height: 10vh;
+}
+
+.viewContainer {
+    background-color: red;
+    display: flex;
+    padding: 0px;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.imgfitparent {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}

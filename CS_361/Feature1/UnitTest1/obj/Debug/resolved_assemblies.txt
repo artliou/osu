@@ -1,0 +1,10 @@
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\UnitTest1.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\Feature1.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\Mono.Android.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\mscorlib.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\System.Core.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\System.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\System.Xml.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\Xamarin.Android.NUnitLite.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\System.Runtime.Serialization.dll
+c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\assemblies\System.ServiceModel.Internals.dll

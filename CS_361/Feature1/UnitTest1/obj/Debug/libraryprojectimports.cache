@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+  <Jars></Jars>
+  <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\__library_projects__\Feature1\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\__library_projects__\Xamarin.Android.NUnitLite\library_project_imports\res</ResolvedResourceDirectory>
+  </ResolvedResourceDirectories>
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\__library_projects__\Feature1\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\__library_projects__\Xamarin.Android.NUnitLite\library_project_imports\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
+  <ResolvedEnvironmentFiles />
+  <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\__library_projects__\Feature1.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>c:\Users\shady\documents\visual studio 2015\Projects\Feature1\UnitTest1\obj\Debug\__library_projects__\Xamarin.Android.NUnitLite.stamp</ResolvedResourceDirectoryStamp>
+  </ResolvedResourceDirectoryStamps>
+</Paths>

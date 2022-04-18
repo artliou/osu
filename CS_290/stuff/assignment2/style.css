@@ -1,0 +1,152 @@
+body {
+    background-color:#373737
+}
+
+.nav_header
+{
+    background-color: #615042;
+    border: 10px #514032 solid;
+}
+
+.nav_header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+.nav_header li {
+    float: left;
+    margin: 10;
+}
+
+.nav_header li a {
+    display: block;
+    text-align: center;
+    padding: 25px 25px;
+    color: black;
+    font-size: 20;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.nav_header li a:hover {
+    background-color: #385E86;
+}
+
+.nav_item_nav
+{
+    float: right !important;
+}
+
+.nav_item
+{
+    display: inline;
+}
+
+.tableCaption
+{
+    font-size:20px;
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+    color: #878787;
+}
+
+.customTable .customTable-primaryColumn
+{
+    font-style: italic;
+}
+
+.customTable .customTable-assignment2
+{
+    vertical-align:middle;
+}
+
+.customTable
+{
+    font-family:Arial, sans-serif;
+    border-style:solid;
+    border-width:5px;
+    border-color: #878787;
+    overflow:hidden;
+    word-break:normal;
+    border-collapse:collapse;
+    border-spacing:0;
+    margin: 25px 25px;
+    background-color: #575757;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.customTable td
+{
+    border-style:solid;
+    border-color: #878787;
+    border-width:2px;
+    text-align: center;
+}
+
+.customTable tr
+{
+    background-color: #4E7300;
+}
+
+.customTable tr:nth-of-type(even)
+{
+    background:#385E86;
+}
+.customTable th
+{
+    font-size:20px;
+    border-style:solid;
+    border-color: #878787;
+    border-width:2px;
+    text-align: center;
+}
+
+.outer-content
+{
+    width: 75%;
+    padding: 20px;
+    background-color: pink;
+    text-align: center;
+    margin: 20px;
+}
+
+.inner-content
+{
+    width: 75%;
+    padding: 20px;
+    background-color: blue;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.customTable2
+{
+    font-family:Arial, sans-serif;
+    border-style:none;
+    border-color: #878787;
+    overflow:hidden;
+    word-break:normal;
+    border-collapse:collapse;
+    border-spacing:0;
+    background-color: #575757;
+    width:75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.customTable2_name
+{
+    border-style: none;
+    text-align: right;
+}
+
+.customTable2_input
+{
+    border-style: none;
+    text-align: left;
+}
